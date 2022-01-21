@@ -1,0 +1,200 @@
+<div class="deletebuttoncontainer">
+    <button class="deletebutton poppins-font" *ngIf="load" (click)="eliminarMiUsuario()">Eliminar mi usuario</button>
+</div>
+<button class="deletebutton poppins-font" *ngIf="loadEliminarMiUsuario" (click)="continuarEliminarMiUsuario()">Continuar</button>
+<button class="nodeletebutton poppins-font" *ngIf="loadEliminarMiUsuario" (click)="cancelarEliminarMiUsuario() ">Cancelar</button>
+<div *ngIf="loadNoSePudoEliminar">No se pudo Eliminar</div>
+<h1 *ngIf="!load">No se encontro el Usuario</h1>
+
+    <div class="datacontainer ">
+        <div *ngIf="load">
+            <div class="profilelabel doris-font" >Nombre:{{usuario.nombre}}</div>
+            <br>
+            <div class="profilelabel doris-font">Ruc/Dni:{{usuario.ruc}}</div>
+            <br>
+            <div class="profilelabel doris-font">Correo:{{usuario.correo}}</div>
+            <br>
+            <div class="profilelabel doris-font">Numero de telefono:{{usuario.telefono}}</div>
+            <br>
+            <div class="profilelabel doris-font">Tipo:{{usuario.tipo}}</div>
+        </div>
+    </div>
+
+<div class="buttoncontainer">
+    <button class="userviewbutton poppins-font" *ngIf="load" routerLink="/pagina-principal/{{usuario.ruc}}">Pagina Principal</button>
+    <button class="userviewbutton poppins-font" *ngIf="load" (click)="obtenerMisProductos()">Mis Productos</button>
+    <button class="userviewbutton poppins-font" *ngIf="load" (click)="obtenerMisVentas()">Mis Ventas</button>
+    <button class="userviewbutton poppins-font" *ngIf="load" (click)="obtenerMisCompras()">Mis Compras</button>
+    <button class="userviewbutton poppins-font" *ngIf="load" (click)="obtenerMisMecenazgos()">Mis Mecenazgos</button>
+    <button class="userviewbutton poppins-font" *ngIf="load" (click)="obtenerMisMecenas()">Mis Mecenas</button>
+    <button class="userviewbutton poppins-font" *ngIf="load" (click)='salir()'>Salir</button>
+</div>
+
+
+<div class="subbloque">
+    <h1 class="doris-font" *ngIf="load && loadMisProductos"> Mis Productos</h1>
+    <table class="content-table doris-font" *ngIf="load && loadMisProductos">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Puntuacion</th>
+                <th>Opciones</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.categoria}}</td>
+                <td>{{producto.calificacion}}</td>
+                <td>
+                    <div class="product-buttonbox">                        
+                        <button class="product-option-button" *ngIf="load" routerLink="/{{id}}/modificar-producto/{{producto.nombre}}">Modificar</button>
+                        <button class="product-option-button" *ngIf="load" routerLink="/{{id}}/detalles-producto/{{id}}/{{producto.nombre}}">Detalles</button>
+                        <button class="delete-option-button" (click)="eliminarMiProducto(producto.nombre+'')">Eliminar</button>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="agregar-button" *ngIf="load && loadMisProductos" routerLink="/{{usuario.ruc}}/agregar-producto">Agregar Producto</button>
+    <div *ngIf="load && loadMisProductos && mensajeEliminacionIncompleta">No se pudo eliminar el producto</div>
+</div>
+
+<div>
+    <br>
+    <br>
+    <br>
+</div>
+
+<h1 class="doris-font" *ngIf="load && loadMisVentas"> Mis Ventas</h1>
+<table class="content-table" *ngIf="loadMisVentas">
+    <thead>
+        <tr>
+            <th>Comprador</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let venta of ventas">
+            <td><a routerLink="/{{id}}/ver-perfil/{{venta.idComprador}}">{{venta.nombreComprador}}</a></td>
+            <td>{{venta.nombreProducto}}</td>
+            <td>{{venta.cantidad}}</td>
+            <td>{{venta.precio}}</td>
+            <td>{{venta.fecha}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 class="doris-font" *ngIf="loadMisCompras"> Mis Compras</h1>
+<table class="content-table doris-font" *ngIf="loadMisCompras">
+    <thead>
+        <tr>
+            <th>Comprador</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let venta of compras">
+            <td><a routerLink="/{{id}}/ver-perfil/{{venta.idVendedor}}">{{venta.nombreComprador}}</a></td>
+            <td><a
+                    routerLink="/{{id}}/detalles-producto/{{venta.idVendedor}}/{{venta.nombreProducto}}">{{venta.nombreProducto}}</a>
+            </td>
+            <td>{{venta.cantidad}}</td>
+            <td>{{venta.precio}}</td>
+            <td>{{venta.fecha}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 class="doris-font" *ngIf="loadMisMecenazgos"> Mis Mecenazgos</h1>
+<table class="content-table" *ngIf="loadMisMecenazgos">
+    <thead>
+        <tr>
+            <th>Nombre Productor</th>
+            <th>Cantidad Abonada</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mecenzago of mecenazgos">
+            <td><a routerLink="/{{id}}/ver-perfil/{{mecenzago.idProductor}}">{{mecenzago.nombreProductor}}</a></td>
+            <td>{{mecenzago.cantidadAbonada}}</td>
+            <td>{{mecenzago.fechaCadena}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 class="doris-font" *ngIf="loadMisMecenas"> Mis Mecenas</h1>
+<table class="content-table" *ngIf="loadMisMecenas">
+    <thead>
+        <tr>
+            <th>Nombre Productor</th>
+            <th>Cantidad Abonada</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mecena of mecenas">
+            <td><a routerLink="/{{id}}/ver-perfil/{{mecena.idMecenas}}">{{mecena.nombreMecenas}}</a></td>
+            <td>{{mecena.cantidadAbonada}}</td>
+        </tr>
+    </tbody>
+</table>
+<h1 class="doris-font" *ngIf="loadMisRecomendaciones"> Recomendaciones</h1>
+<table *ngIf="loadMisRecomendaciones">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Puntuacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of recomendacion">
+            <td><a
+                    routerLink="/{{id}}/detalles-producto/{{producto.idVendedor}}/{{producto.nombre}}">{{producto.nombre}}</a>
+            </td>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.calificacion}}</td>
+        </tr>
+    </tbody>
+</table>
+<h1 class="doris-font" *ngIf="load"> Mi Canasta</h1>
+<table class="content-table doris-font"  *ngIf="load">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Puntuacion</th>
+            <th>Unidad de medida</th>
+            <th>Precio</th>
+            <th>Vendedor</th>
+            <th>Cantidad</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of miCanasta;let i=index">
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.calificacion}}</td>
+            <td>{{producto.unidadDeMedida}}</td>
+            <td *ngIf="producto.precio">S/{{cantidad[i] * producto.precio}}</td>
+            <td>{{producto.nombreVendedor}}</td>
+            <th>{{cantidad[i]}}</th>
+            <td>
+                <button (click)="eliminarDeCanasta(i)">Eliminar</button>
+                <button (click)="aumentarCantidad(i)">Aumentar</button>
+                <button (click)="disminuirCantidad(i)">Disminuir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="comprar-button" *ngIf="load" (click)="vaciarCanasta()">Comprar</button>

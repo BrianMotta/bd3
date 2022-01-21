@@ -1,0 +1,59 @@
+<select [(ngModel)]='elementoBusqueda'>
+
+    <option>Productos</option>
+    <option>Usuarios</option>
+</select>
+<br>
+<div class="buttonbox">
+    <button class="search-button" (click)='mostrar()'>Buscar</button>
+    <button class="myuser-button" routerLink='/vista-usuario/{{id}}'>Mi Usuario</button>
+</div>
+
+<table class="content-table doris-font" style.display='{{displayProductos}}'>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Puntuación</th>
+            <th>Vendedor</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let producto of productos'>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.categoria}}</td>
+            <td>S/{{producto.precio}} <div *ngIf='producto.unidadDeMedida==="Kg"'> Kg</div> </td>
+            <td>{{producto.calificacion}}</td>
+            <td><a *ngIf='id!=producto.idVendedor'
+                    routerLink='/{{id}}/ver-perfil/{{producto.idVendedor}}'>{{producto.nombreVendedor}}</a>
+                <a *ngIf='id===producto.idVendedor' routerLink='/vista-usuario/{{id}}'>{{producto.nombreVendedor}}</a>
+            </td>
+            <td><button class="details-button" routerLink='/{{id}}/detalles-producto/{{producto.idVendedor}}/{{producto.nombre}}'>Ver
+                    Detalles</button></td>
+        </tr>
+    </tbody>
+</table>
+<table class="content-table" style.display='{{displayUsuarios}}'>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ruc</th>
+            <th>Tipo</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let usuario of usuarios'>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.ruc}}</td>
+            <td>{{usuario.tipo}}</td>
+            <td>{{usuario.correo}}</td>
+            <td>{{usuario.telefono}}</td>
+            <td><button class="seeprofile-button" (click)="verPerfil(usuario.ruc+'')">Ver Perfil</button></td>
+        </tr>
+    </tbody>
+</table>

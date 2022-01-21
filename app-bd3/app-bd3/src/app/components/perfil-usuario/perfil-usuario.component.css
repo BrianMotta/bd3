@@ -1,0 +1,106 @@
+.block {
+    display: flex;
+    justify-content: center;
+}
+
+.subblock {
+    background-color: rgb(219, 250, 240);
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: rgb(0,0,0,0.15);
+}
+
+.header-buttonbox {
+    display: flex;
+    justify-content: left;
+}
+
+.headerbutton {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgb(197, 246, 220);
+}
+
+.data-field {
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px;
+    font-family: sans-serif;
+}
+
+.data-field-name {
+    padding: 10px;
+    margin: 10px;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-style: bold;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+.content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.abono-box {
+    background-color: rgb(228, 240, 248);
+    padding: 15px;
+    font-family: sans-serif;
+    width: 40%;
+    border-radius: 4px;
+    box-shadow: rgb(0,0,0,0.15);
+}
+
+.abono-box button {
+    border-radius: 8px;
+    margin: 10px;
+    height: 40px;
+    width: 120px;
+}
+
+.abono-box input {
+    height: 30px;
+    margin-right: 20px;
+}
+
+.abono {
+    text-align: center;
+}
+
+.block2 {
+    display: flex;
+    justify-content: center;
+}
+
+.subblock2 {
+    background: #ffffff;
+    margin:20px;
+}

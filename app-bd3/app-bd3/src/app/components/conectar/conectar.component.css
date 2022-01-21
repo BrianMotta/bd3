@@ -1,0 +1,57 @@
+.background {
+    /*background: linear-gradient(to bottom right, #7fdfa2, white);*/
+    background: url(https://image.freepik.com/free-photo/happy-smiing-gardener-holding-pot-with-cactus-flowers-shop_496169-1386.jpg);
+    background-size: 100%;
+}
+
+.indexcontainerupper {
+    display: flex;
+    justify-content: center;
+}
+.indexcontainer {
+    margin: 20px;
+    margin-top: 100px;
+    background: #3D9970    ;
+    width: 32%;
+    padding: 90px 0px 90px;
+    box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+.indexfield {
+    text-align: center;
+}
+
+.indexbuttoncontainer {
+    text-align: center;
+}
+
+.indexbutton {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background: beige;
+    font-size: 20px;
+}
+
+.indexlabel {
+    font-family:sans-serif;
+    font-size: 30px;
+    color: white;
+}
+
+.indexinput {
+    border-radius: 4px;
+    height: 20px;
+    padding: 5px;
+}
+
+.imgcontainer {
+    display: flex;
+    justify-content: center;
+}
+
+.imgcontainer img{
+    border-radius: 20px;
+    width: 20%;
+    height: 20%;
+}

@@ -1,0 +1,43 @@
+<div class="productbox">
+    <div class="product">
+        <label>Nombre del Producto:</label>
+        <input [(ngModel)]='nombreInput'>
+    </div>
+    <div class="product">
+        <label>Categoria:</label>
+        <select [(ngModel)]='categoriaInput'>
+            <option>Alimento</option>
+            <option>Higiene</option>
+            <option>Ropa</option>
+            <option>Hogar</option>
+            <option>Tecnologia</option>
+            <option>Arte</option>
+            <option>Otros</option>
+        </select>
+    </div>
+    <br>
+    <div class="product">
+        <label>Descripcion:</label>
+        <textarea [(ngModel)]='descripcionInput'></textarea>
+    </div>
+    <br>
+    <div class="product">
+        <label>Precio:S/</label>
+        <input [(ngModel)]='precioInput'>
+    </div>
+    <br> 
+    <div class="product">
+        <label>Unidad de Medida:</label>
+        <select [(ngModel)]='unidadDeMedidaInput'>
+            <option>Paquete</option>
+            <option>Unidad</option>
+            <option>Kg</option>
+        </select>
+    </div>
+    <br>
+    <button class="productbutton" (click)="modificarProducto()" >Modificar</button>
+    <button class="productbutton" routerLink="/vista-usuario/{{id}}">Mi Usuario</button>
+</div>
+
+
+

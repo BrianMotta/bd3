@@ -1,0 +1,38 @@
+<div class="background">
+    <div class="indexcontainerupper">
+        <div class="indexcontainer">
+            <div class="indexfield">
+                <label class="indexlabel">Correo:</label>
+                <br>
+                <input class="indexinput" type='text' [(ngModel)]='inputCorreo'>
+            </div>
+            <br>
+            <div class="indexfield">
+                <label class="indexlabel">Contraseña:</label>
+                <br>
+                <input class="indexinput" type='password' [(ngModel)]='inputClave'>
+            </div>
+            
+            <div>
+                <br>
+            </div>
+            
+            <div *ngIf='noEncontro'>
+            Correo o contraseña incorrectas
+            </div>
+            <div class="indexbuttoncontainer">
+                <button class="indexbutton" (click)='conectar()'>Ingresar</button>
+                <button class="indexbutton" routerLink='crear-usuario'>Crear Usuario</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

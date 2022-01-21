@@ -1,0 +1,33 @@
+.main {
+    background: lightcyan;
+    height: 100%;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: left;
+}
+
+.button {
+    padding: 10px;
+    background: lightblue;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: sans-serif;
+    margin: 5px;
+}
+
+.label {
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.inputcontainer {
+    margin: 12px;
+}
+
+.input {
+    border-radius: 8px;
+    padding: 5px;
+    margin: auto 10px;
+}

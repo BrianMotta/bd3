@@ -1,0 +1,46 @@
+<div class="formcontainer">
+    <div>
+        <label class="formlabel" >Nombre del Producto:</label>
+        <input [(ngModel)]='nombreInput'>
+    </div>
+    <br>
+    <div>
+        <label class="formlabel" >Categoría:</label>
+        <select class="selectcategory" [(ngModel)]='categoriaInput'>
+            <option>Alimento</option>
+            <option>Higiene</option>
+            <option>Ropa</option>
+            <option>Hogar</option>
+            <option>Tecnología</option>
+            <option>Arte</option>
+            <option>Otros</option>
+        </select>
+    </div>
+    <br>
+    <div>
+        <label class="formlabel" >Descripción (Opcional):</label>
+        <textarea [(ngModel)]='descripcionInput'></textarea>
+    </div>
+    <br>
+    <div>
+        <label class="formlabel" >Precio: S/</label>
+        <input [(ngModel)]='precioInput'>
+    </div>
+    <br>
+    <div>
+        <label class="formlabel" >Unidad de Venta:</label>
+        <select class="selectunit" [(ngModel)]='unidadDeMedidaInput'>
+            <option>Paquete</option>
+            <option>Unidad</option>
+            <option>Kg</option>
+        </select>
+    </div>
+
+    <div class="buttonbox">
+        <button class="addproductbutton" (click)="crearProducto()" >Crear</button>
+        <button class="addproductbutton" routerLink="/vista-usuario/{{id}}">Volver a Mi Perfil</button>
+    </div>
+
+</div>
+<h1 *ngIf="mensajeError">No se pudo agregar el producto</h1>
+

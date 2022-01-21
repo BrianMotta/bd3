@@ -1,0 +1,43 @@
+<div class="buttoncontainer">
+    <button class="userviewbutton" *ngIf="load" routerLink="/pagina-principal/{{id}}">Pagina Principal</button>
+    <button class="userviewbutton" *ngIf="load && id!=idVendedor" (click)="agregarCanasta()">Agregar a la Canasta</button>
+    <button class="userviewbutton" *ngIf="load && id===idVendedor" (click)="eliminarMiProducto(productoDetalles.nombre+'')">Eliminar
+        Producto</button>
+    <button class="userviewbutton" *ngIf="load && id===idVendedor" routerLink="/{{id}}/modificar-producto/{{productoDetalles.nombre}}">Modificar
+        Producto</button>
+    <button class="userviewbutton" routerLink="/vista-usuario/{{id}}">Mi Usuario</button>
+</div>
+
+<div class="product">
+    <h1 class="productlabelname" *ngIf="!load">No se encontro el Producto</h1>
+    <div *ngIf="load && mensajeEliminacionIncompleta">No se pudo eliminar el producto</div>
+    <h1 *ngIf="load">Nombre:{{productoDetalles.nombre}}</h1>
+    <div class="productlabel" *ngIf="load">Categoria: {{productoDetalles.categoria}}</div>
+    <div class="productlabel" *ngIf="load">Descripcion: {{productoDetalles.descripcion}}</div>
+    <div class="productlabel" *ngIf="load">Precio: {{productoDetalles.precio}}</div>
+    <div class="productlabel" *ngIf="load">Unidad de Medida: {{productoDetalles.unidadDeMedida}}</div>
+    <div class="productlabel" *ngIf="load">Calificacion: {{productoDetalles.calificacion}}</div>
+    <div class="productlabel" *ngIf="load && id!=idVendedor">Productor: <a
+            routerLink="/{{id}}/ver-perfil/{{idVendedor}}">{{productoDetalles.nombreVendedor}}</a></div>
+    <div *ngIf="load">
+        <div class="productlabel">Comentarios</div>
+        <div *ngFor="let c of productoDetalles.comentarios">
+            <div>{{c.cuerpo}} </div>
+            <div>{{c.fecha}}</div>
+        </div>
+        <div><textarea [(ngModel)]="inputComentario"></textarea> </div>
+    
+    </div>
+    <button class="userviewbutton" *ngIf="load" (click)="agregarComentario()">Agregar Comentario</button>
+    
+    
+    <div *ngIf="load && id!=idVendedor">
+        <input type="radio" name="calificacion" [value]="1" [(ngModel)]="inputVoto">1
+        <input type="radio" name="calificacion" [value]="2" [(ngModel)]="inputVoto">2
+        <input type="radio" name="calificacion" [value]="3" [(ngModel)]="inputVoto">3
+        <input type="radio" name="calificacion" [value]="4" [(ngModel)]="inputVoto">4
+        <input type="radio" name="calificacion" [value]="5" [(ngModel)]="inputVoto" checked>5
+        <button class="userviewbutton" (click)="calificar()">Calificar</button>
+    </div>
+</div>
+

@@ -1,0 +1,35 @@
+.buttoncontainer {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    padding: 8px;
+}
+
+.userviewbutton {
+    background-color: rgb(32, 95, 45);
+    color: beige;
+    padding: 10px;
+    margin: 5px;
+    font-size: 20px;
+    border-width: 0px;
+    box-shadow: rgb(0,0,0,0.15);
+}
+
+.productlabel {
+    font-family: sans-serif;
+    font-size: 24px;
+    margin:10px;
+}
+
+.productlabelname {
+    font-family: sans-serif;
+}
+
+.product {
+    background-color: rgb(213, 234, 255);
+    position: relative;
+    margin: 15px;
+    padding: 20px;
+    width: 50%;
+    box-shadow: rgba(0,0,0,0.15);
+}

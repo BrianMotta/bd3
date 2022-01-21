@@ -1,0 +1,37 @@
+<div class="main">
+    <div class="inputcontainer">
+        <label class="label">Nombre:</label>
+        <input class="input" type='text' [(ngModel)]='inputNombre'>
+    </div>
+    <div class="inputcontainer">
+        <label class="label">Contraseña:</label>
+        <input class="input" type='password' [(ngModel)]='inputClave'>
+    </div>
+    <div class="inputcontainer">
+        <label class="label">Tipo:</label>
+        <select [(ngModel)]='inputTipo'>
+            <option>Persona Natural</option>
+            <option>Empresa</option>
+        </select>
+    </div>
+    <div class="inputcontainer">
+        <label class="label">Correo:</label>
+        <input class="input" type='text' [(ngModel)]='inputCorreo'>
+    </div>
+    <div class="inputcontainer">
+        <label class="label">Ruc/Dni:</label>
+        <input class="input" type='text' [(ngModel)]='inputRuc'>
+    </div>
+    <div class="inputcontainer">
+        <label class="label">Telefono:</label>
+        <input class="input" type='text' [(ngModel)]='inputTelefono'>
+    </div>
+    <br>
+    <div class="buttoncontainer">
+        <button class="button" (click)='crearUsuario()'>Crear</button>
+        <button class="button" routerLink=''>Volver</button>
+    </div>
+    <div *ngIf='errorCrearUsuario'>
+        El usuario ya existe o uno de los campos no cumple con las condiciones
+    </div>
+</div>

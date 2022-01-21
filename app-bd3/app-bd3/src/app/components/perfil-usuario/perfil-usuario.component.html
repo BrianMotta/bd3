@@ -1,0 +1,77 @@
+<div class="block">
+    <div class="subblock">
+        <div *ngIf="usuarioNoExiste">Usuario fue eliminado o no se puede encontrar temporalmente</div>
+        <div *ngIf="load">
+            <div class="data-field-name">Nombre: {{perfilUsuario.nombre}}</div>
+            <div class="data-field">Ruc/Dni: {{perfilUsuario.ruc}}</div>
+            <div class="data-field">Correo: {{perfilUsuario.correo}}</div>
+            <div class="data-field">Numero de Teléfono: {{perfilUsuario.telefono}}</div>
+            <div class="data-field">Tipo: {{perfilUsuario.tipo}}</div>
+        </div>
+    </div>
+    <div class="subblock">
+        <div class="header-buttonbox">
+            <button class="headerbutton" routerLink="/vista-usuario/{{id}}">Mi Usuario</button>
+            <button class="headerbutton" routerLink="/pagina-principal/{{id}}">Pagina Principal</button>
+            <button class="headerbutton" *ngIf="!loadRealizarMecenazgo && !usuarioNoExiste" (click)="realizarMecenazgo()">Realizar Mecenazgo</button>
+        </div>
+        <div class="abono" *ngIf="loadRealizarMecenazgo">
+            <div class="abono-box">
+                <div>Cantidad a Abonar (S/.):</div>
+                <input [(ngModel)]="cantidadAbonada">
+                <button (click)="crearMecenazgo()">Abonar</button>
+                <button (click)="cancelarMecenazgo()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="block2">
+    <div class="subblock2">
+        <h1 *ngIf="loadProductos"> Productos</h1>
+    <table class="content-table" *ngIf="load && loadProductos">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Precio</th>
+                <th>Unidad de medida</th>
+                <th>Puntuacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <td><a routerLink="/{{id}}/detalles-producto/{{idPerfil}}/{{producto.nombre}}">{{producto.nombre}}</a></td>
+                <td>{{producto.categoria}}</td>
+                <td>S/{{producto.precio}}</td>
+                <td>{{producto.unidadDeMedida}}</td>
+                <td>{{producto.calificacion}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    
+    <div class="subblock2">
+        <h1 *ngIf="loadMecenazgos && !usuarioNoExiste"> Mecenazgos</h1>
+    <table class="content-table" *ngIf="load && loadMecenazgos">
+        <thead>
+            <tr>
+                <th>Nombre Productor</th>
+                <th>CantidadAbonada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mecenazgo of mecenazgos">
+                <td><a *ngIf="id!=mecenazgo.idProductor"
+                        routerLink="/{{id}}/ver-perfil/{{mecenazgo.idProductor}}">{{mecenazgo.nombreProductor}}</a>
+                    <a *ngIf="id===mecenazgo.idProductor"
+                        routerLink="/vista-usuario/{{id}}">{{mecenazgo.nombreProductor}}</a>
+                </td>
+                <td>{{mecenazgo.cantidadAbonada}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
